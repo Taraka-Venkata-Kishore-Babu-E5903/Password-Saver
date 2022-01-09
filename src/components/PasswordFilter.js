@@ -8,7 +8,7 @@ const PasswordFilter = () => {
         filterPassword(e.target.value);
     };
     return (
-        <div>
+        <div className="mt-2">
             <input
                 type="search"
                 placeholder="Search..."

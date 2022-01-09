@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PasswordContext from "../context/password/passwordContext";
 
 const Password = ({ password }) => {
+    const navigate = useNavigate();
     const passwordContext = useContext(PasswordContext);
 
     const { deletePassword, setCurrent } = passwordContext;
+
+    const update = (pass) => {
+        setCurrent(pass);
+        navigate("/add");
+    };
     return (
         <div className="d-flex crd justify-content-between pt-3 pb-3 px-4 mb-3 shadow bg-light">
             <div>
@@ -30,7 +37,7 @@ const Password = ({ password }) => {
             <div className="d-flex flex-column">
                 <button
                     className="btn btn-primary me-2 mb-3"
-                    onClick={() => setCurrent(password)}
+                    onClick={() => update(password)}
                 >
                     Edit
                 </button>

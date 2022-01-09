@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PasswordContext from "../context/password/passwordContext";
 
 const PasswordForm = () => {
+    const navigate = useNavigate();
     const nameRef = useRef(null);
     const urlRef = useRef(null);
     const usernameRef = useRef(null);
@@ -51,6 +53,7 @@ const PasswordForm = () => {
         } else {
             addPassword(pass);
         }
+        navigate("/contacts");
         setPass({
             name: "",
             url: "",
@@ -59,7 +62,7 @@ const PasswordForm = () => {
         });
     };
     return (
-        <div className="col-12 col-md-6">
+        <div className="container form-container">
             <h1 className="text-primary mb-4">
                 {current ? "Update Password" : "Add Password"}
             </h1>

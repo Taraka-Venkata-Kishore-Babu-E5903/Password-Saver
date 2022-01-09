@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import PasswordContext from "../context/password/passwordContext";
 import Password from "./Password";
+import PasswordFilter from "./PasswordFilter";
 
 const Passwords = () => {
     const passwordContext = useContext(PasswordContext);
@@ -12,7 +13,8 @@ const Passwords = () => {
         // eslint-disable-next-line
     }, []);
     return (
-        <ul className="item">
+        <div className="container passwords-container">
+            <PasswordFilter />
             {!filtered ? (
                 !loading ? (
                     passwords.length === 0 ? (
@@ -35,7 +37,7 @@ const Passwords = () => {
             ) : (
                 filtered.map((fil) => <Password key={fil.id} password={fil} />)
             )}
-        </ul>
+        </div>
     );
 };
 
